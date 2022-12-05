@@ -110,24 +110,20 @@ class Compare_overlord():
             return "not sure"
 
 #######################################################################################################################
-# Annat jox
+# Koden som utför algoritmen
 #######################################################################################################################
 
 
 
 def run_program(filename):
-    number_of_lines = 0
-    first_time = True
+    counter = 0
     with open(filename, 'r') as file:
         for line in file:
-            if number_of_lines == 0:
-                if not first_time: # För att undvika att printa första gången
-                    print(comparison_object.final_statement())  # Printar ut FÖREGÅENDE
+            if counter == 0:
                 comparison_object = Compare_overlord()
-                number_of_lines = int(line.strip())
+                counter = int(line.strip())
     
             else:
-                first_time = False
                 stripped_line = line.strip()
                 line_list = stripped_line.split(' ')
                 for index in range(len(line_list)):
@@ -136,7 +132,95 @@ def run_program(filename):
                     comparison_object.add_number(line_list[1])
                 else:
                     comparison_object.remove(line_list[1])
-                number_of_lines -= 1
-    print(comparison_object.final_statement())  # Printar ut den allra sista
+                counter -= 1
+                if counter == 0:    # Triggas endast sista gången
+                    print(comparison_object.final_statement())
 
-run_program('guessthedatastructure_sample.txt')
+
+
+#run_program('guessthedatastructure_sample.txt')
+#run_program('ismall.txt')
+
+
+
+def run_program_input():
+    counter = 0
+    while True:
+        long_line = input()
+        line = long_line.strip()
+        if counter == 0:
+            comparison_object = Compare_overlord()
+            counter = int(line.strip())
+
+        else:
+            stripped_line = line.strip()
+            line_list = stripped_line.split(' ')
+            for index in range(len(line_list)):
+                line_list[index] = int(line_list[index])
+            if line_list[0] == 1:
+                comparison_object.add_number(line_list[1])
+            else:
+                comparison_object.remove(line_list[1])
+            counter -= 1
+            if counter == 0:  # Triggas endast sista gången
+                print(comparison_object.final_statement())
+#run_program('guessthedatastructure_sample.txt')
+
+
+
+
+def run_program_input_medbreak():
+    while True:
+        counter = 0
+        try:
+            long_line = input()
+            line = long_line.strip()
+            if counter == 0:
+                comparison_object = Compare_overlord()
+                counter = int(line.strip())
+
+            else:
+                stripped_line = line.strip()
+                line_list = stripped_line.split(' ')
+                for index in range(len(line_list)):
+                    line_list[index] = int(line_list[index])
+                if line_list[0] == 1:
+                    comparison_object.add_number(line_list[1])
+                else:
+                    comparison_object.remove(line_list[1])
+                counter -= 1
+                if counter == 0:  # Triggas endast sista gången
+                    print(comparison_object.final_statement())
+        except (ValueError, EOFError):
+            break
+
+#######################################################################################################################
+# Koden som utför algoritmen
+#######################################################################################################################
+import sys
+
+'''
+def run_program_stdin():
+    counter = 0
+    for line in user_input:
+        if counter == 0:
+            comparison_object = Compare_overlord()
+            counter = int(line.strip())
+
+        else:
+            stripped_line = line.strip()
+            line_list = stripped_line.split(' ')
+            for index in range(len(line_list)):
+                line_list[index] = int(line_list[index])
+            if line_list[0] == 1:
+                comparison_object.add_number(line_list[1])
+            else:
+                comparison_object.remove(line_list[1])
+            counter -= 1
+            if counter == 0:  # Triggas endast sista gången
+                print(comparison_object.final_statement())
+
+
+user_input = sys.stdin.readlines()
+run_program_stdin()'''
+
