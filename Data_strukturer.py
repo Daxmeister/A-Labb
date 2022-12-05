@@ -67,3 +67,20 @@ def Stack():
 
 def Priority_queue():
     pass
+
+
+
+
+
+def input_reader(filename):
+    for line in filename:
+        comparison_object = Compare_overlord
+        number_of_lines = int(input())
+        for counter in number_of_lines:
+            line = input()
+            line_list = line.split(' ')
+            if line_list[0] == 1:
+                comparison_object.add_number(line_list[1])
+            else:
+                comparison_object.remove(line_list[1])
+        print(comparison_object.final_statement())
