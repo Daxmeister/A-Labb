@@ -4,6 +4,7 @@
 # Skapar classes som håller koll på våra tre datastrukturer
 #######################################################################################################################
 
+
 class Queue_tester():
     '''En klass som fungerar som en Queue.'''
 
@@ -142,11 +143,12 @@ def run_program(filename):
             else:
                 stripped_line = line.strip()
                 line_list = stripped_line.split(' ')
-                for index in range(len(line_list)):
+                for index in range(len(line_list)): # Gör om till integers
                     line_list[index] = int(line_list[index])
-                if line_list[0] == 1:
+
+                if line_list[0] == 1:   # Om vi ska lägga till i datatypen
                     comparison_object.add_number(line_list[1])
-                else:
+                else:   # Om vi ska ta bort från datatypen
                     comparison_object.remove(line_list[1])
                 counter -= 1
                 if counter == 0:    # Triggas endast sista gången
@@ -154,11 +156,11 @@ def run_program(filename):
 
 
 
-#run_program('guessthedatastructure_sample.txt')
+run_program('Test3.txt')
 #run_program('ismall.txt')
 
 
-
+'''
 def run_program_input():
     counter = 0
     while True:
@@ -181,11 +183,11 @@ def run_program_input():
             if counter == 0:  # Triggas endast sista gången
                 print(comparison_object.final_statement())
 #run_program('guessthedatastructure_sample.txt')
+'''
 
 
 
-
-def run_program_input_medbreak():
+'''def run_program_input_medbreak():
     while True:
         counter = 0
         try:
@@ -208,16 +210,16 @@ def run_program_input_medbreak():
                 if counter == 0:  # Triggas endast sista gången
                     print(comparison_object.final_statement())
         except (ValueError, EOFError):
-            break
+            break'''
 
 #######################################################################################################################
 # Koden som utför algoritmen
 #######################################################################################################################
-import sys
+'''import sys
 
 
 def run_program_stdin():
-    '''Funktion som används för att bli godkänd vid kattis. Den kör programmet och är gjord för standard input.'''
+    # Funktion som används för att bli godkänd vid kattis. Den kör programmet och är gjord för standard input.
 
     counter = 0 # Denna variabel håller kolla på när vi fortfarande har ett och samma input fall.
 
@@ -244,5 +246,5 @@ def run_program_stdin():
 
 # Här nedan utförs programmet.
 user_input = sys.stdin.readlines()
-run_program_stdin()
+run_program_stdin()'''
 
